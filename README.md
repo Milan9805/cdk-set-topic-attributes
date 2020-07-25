@@ -1,4 +1,5 @@
 # cdk-set-topic-attributes
+
 The purpose of this project is to provide an example of how to set up an SNS topic and set this Topics attributes.
 
 This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is invoked to set its attributes.
@@ -28,7 +29,8 @@ Once you have deployed the app, you should manually go into the AWS Console and 
 In order for the GithubAction to invoke the set-topic-attributes Lambda we must do the following in the AWS Console:
 
 - Create a new User `IAM -> Users -> Add user`
-- Username can be something like `esg-app-commercial-bookings-invoke-topic-lambda`
+- Username can be something relating to your project e.g.
+  `cdk-set-topic-attributes`
 - Select `Programmatic access` -> `Next: Permissions`
 - Select `Attach existing policies directly`
   - Add `AWSLambdaRole`

@@ -1,0 +1,20 @@
+{
+  "name": "cdk-set-topic-attributes",
+  "version": "1.0.0",
+  "description": "Use CDK to set SNS topic attributes",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:coverage": "jest --coverage --coverageReporters=html && npm run open-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Milan9805/cdk-set-topic-attributes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Milan9805/cdk-set-topic-attributes/issues"
+  },
+  "homepage": "https://github.com/Milan9805/cdk-set-topic-attributes#readme"
+}
