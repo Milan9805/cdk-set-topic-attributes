@@ -51,11 +51,11 @@ jobs:
             run: |
               cd infrastructure
               npx cdk bootstrap \
-              --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/GithubActionsDeploymentRole \
+              --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
               --toolkit-stack-name $GITHUB_REPOSITORY_NAME-cdk-toolkit
               npx cdk deploy \
               --require-approval never \
-              --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/GithubActionsDeploymentRole \
+              --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
               --toolkit-stack-name $GITHUB_REPOSITORY_NAME-cdk-toolkit
           - name: Invoke set-topic-attributes Lambda
             uses: gagoar/invoke-aws-lambda@master
