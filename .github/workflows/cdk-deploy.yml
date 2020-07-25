@@ -29,19 +29,19 @@ jobs:
             run: |
                 cd setTopicAttributes
                 npm run pre-package
-          - name: "install event feed stack"
+          - name: "install infrastructure stack"
             run: |
                 cd infrastructure
                 npm ci
-          - name: "test event feed stack"
+          - name: "test infrastructure stack"
             run: |
                 cd infrastructure
                 npm run test
-          - name: "build event feed stack"
+          - name: "build infrastructure stack"
             run: |
                 cd infrastructure
                 npm run build
-          - name: "deploy event feed stack"
+          - name: "deploy infrastructure stack"
             env:
               AWS_ACCESS_KEY_ID: "${{secrets.AWS_ACCESS_KEY_ID_DEV}}"
               AWS_ACCOUNT_ID: "${{secrets.AWS_ACCOUNT_ID_DEV}}"
