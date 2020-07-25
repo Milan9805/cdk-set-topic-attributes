@@ -2,6 +2,7 @@
   "name": "cdk-set-topic-attributes",
   "version": "0.1.0",
   "description": "CloudFormation code",
+  "author": "Milan Makwana",
   "bin": {
     "infrastructure": "bin/infrastructure.js"
   },
