@@ -6,8 +6,8 @@ export $(egrep -v '^#' .env | xargs)
 echo "Deploying stack to AWS account: $AWS_ACCOUNT_ID"
 npx cdk bootstrap \
   --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
-  --toolkit-stack-name esg-app-commercial-bookings-kinetic-kxconferencing-source-connector-cdk-toolkit
+  --toolkit-stack-name cdk-set-topic-attributes-cdk-toolkit
 npx cdk deploy \
   --require-approval never \
   --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
-  --toolkit-stack-name esg-app-commercial-bookings-kinetic-kxconferencing-source-connector-cdk-toolkit
+  --toolkit-stack-name cdk-set-topic-attributes-cdk-toolkit
