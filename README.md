@@ -1,6 +1,6 @@
 # cdk-set-topic-attributes
 
-The purpose of this project is to provide an example of how to set up an SNS topic and set this Topics attributes.
+The purpose of this project is to provide an example of how to set up an SNS Topic and set this Topics attributes.
 
 This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is invoked to set its attributes.
 
@@ -9,7 +9,7 @@ This application contains the AWS CDK code for deploying an SNS Topic and a Lamb
 You can deploy the entire app from your local machine to AWS. To do this you'll need to:
 
 - Ensure you have prepared the lambda code by running `build` npm script found in `setTopicAttributes/package.json`.
-- Configure your `infrastructure/.env` by taking a copy of `/infrastructure/.env.example` and populating it with your sandbox credentials.
+- Configure your `infrastructure/.env` by taking a copy of `/infrastructure/.env.example` and populating it with your AWS credentials.
 
 Once these prerequisites have been set up you can deploy by running the `cdk:deploy` npm script found in
 `infrastructure/package.json`.
