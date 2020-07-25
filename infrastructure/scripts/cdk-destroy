@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+AWS_ACCOUNT_ID=$(grep AWS_ACCOUNT_ID .env | cut -d '=' -f 2-)
+export $(egrep -v '^#' .env | xargs)
+
+echo "Destroying stack in AWS account: $AWS_ACCOUNT_ID"
+npx cdk destroy

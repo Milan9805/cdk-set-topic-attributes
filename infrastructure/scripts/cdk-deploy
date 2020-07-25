@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+AWS_ACCOUNT_ID=$(grep AWS_ACCOUNT_ID .env | cut -d '=' -f 2-)
+export $(egrep -v '^#' .env | xargs)
+
+echo "Deploying stack to AWS account: $AWS_ACCOUNT_ID"
+npx cdk bootstrap \
+  --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
+  --toolkit-stack-name esg-app-commercial-bookings-kinetic-kxconferencing-source-connector-cdk-toolkit
+npx cdk deploy \
+  --require-approval never \
+  --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
+  --toolkit-stack-name esg-app-commercial-bookings-kinetic-kxconferencing-source-connector-cdk-toolkit

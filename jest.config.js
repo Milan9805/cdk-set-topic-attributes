@@ -8,7 +8,7 @@ module.exports = {
         '!cdk-set-topic-attributes-lambda/src/*.test.ts',
         '!cdk-set-topic-attributes-lambda/src/**/*.test.ts',
     ],
-    setupFiles: ['<rootDir>/infrastructure/.jest/setEnvVars.js'],
+    setupFiles: ['<rootDir>/infrastructure/.jest/setEnvironmentVariables.js'],
     testPathIgnorePatterns: [
         '<rootDir>/infrastructure/cdk.out/',
         '<rootDir>/infrastructure/dist/',
