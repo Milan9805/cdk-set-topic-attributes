@@ -1,0 +1,39 @@
+name: Install, test and build on all branches
+
+on: push
+
+jobs:
+  default:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: "Install set-topic-attributes lambda"
+        run: |
+            cd setTopicAttributes
+            npm ci
+      - name: "Test set-topic-attributes lambda"
+        run: |
+            cd setTopicAttributes
+            npm run test
+      - name: "Build set-topic-attributes lambda"
+        run: |
+            cd setTopicAttributes
+            npm run build
+      - name: Install node project
+        run: |
+          cd infrastructure
+          npm ci
+      - name: Test node project
+        run: |
+          cd infrastructure
+          npm run test
+      - name: Build node project
+        run: |
+          cd infrastructure
+          npm run build
