@@ -1,12 +1,12 @@
 module.exports = {
     preset: 'ts-jest',
     collectCoverageFrom: [
-        'infrastructure/**/*.ts',
-        '!infrastructure/bin/*.ts',
-        'cdk-set-topic-attributes-lambda/src/*.ts',
-        'cdk-set-topic-attributes-lambda/src/**/*.ts',
-        '!cdk-set-topic-attributes-lambda/src/*.test.ts',
-        '!cdk-set-topic-attributes-lambda/src/**/*.test.ts',
+        '<rootDir>/infrastructure/**/*.ts',
+        '!<rootDir>/infrastructure/bin/*.ts',
+        '<rootDir>/setTopicAtributes/src/*.ts',
+        '<rootDir>/setTopicAtributes/src/**/*.ts',
+        '!<rootDir>/setTopicAtributes/src/*.test.ts',
+        '!<rootDir>/setTopicAtributes/src/**/*.test.ts',
     ],
     setupFiles: ['<rootDir>/infrastructure/.jest/setEnvironmentVariables.js'],
     testPathIgnorePatterns: [
@@ -17,10 +17,10 @@ module.exports = {
     testEnvironment: 'node',
     coverageThreshold: {
         global: {
-            statements: 89.81,
-            branches: 52.5,
-            functions: 84.21,
-            lines: 89.72,
+            statements: 100,
+            branches: 100,
+            functions: 100,
+            lines: 100,
         },
     },
     coverageReporters: ['json', 'lcov', 'text', 'clover'],

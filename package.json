@@ -15,7 +15,9 @@
     "main": "index.js",
     "scripts": {
         "pre-commit": "lint-staged && npm run test",
-        "test": "cd infrastructure && npm run test && cd ../setTopicAttributes && npm run test",
+        "test": "run-s test:build:infrastructure test:build:lambda",
+        "test:build:infrastructure": "cd infrastructure && npm install && run-s build test",
+        "test:build:lambda": "cd setTopicAttributes && npm install && run-s build test",
         "test:coverage": "jest --coverage --coverageReporters=html && npm run open-coverage"
     },
     "husky": {
@@ -61,7 +63,9 @@
         "tabWidth": 4,
         "trailingComma": "es5"
     },
-    "dependencies": {},
+    "dependencies": {
+        "npm-run-all": "^4.1.5"
+    },
     "devDependencies": {
         "@types/jest": "^26.0.5",
         "husky": "^4.2.5",
