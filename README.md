@@ -26,7 +26,7 @@ You can deploy the entire app from your local machine to AWS. To do this you'll 
 -   Run the `pre-package` npm script found in `/setTopicAttributes/package.json`
 -   Run the `deploy` npm script found in `/deploySetTopicAttributesLambda/package.json`
 
-Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block).
+Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block e.g. `{}`).
 
 ## Deploying Infrastructure to AWS via CDK with GitHub Actions
 
