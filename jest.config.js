@@ -12,7 +12,7 @@ module.exports = {
     testPathIgnorePatterns: [
         '<rootDir>/infrastructure/cdk.out/',
         '<rootDir>/infrastructure/dist/',
-        '<rootDir>/cdk-set-topic-attributes-lambda/dist/',
+        '<rootDir>/setTopicAttributes/dist/',
     ],
     testEnvironment: 'node',
     coverageThreshold: {

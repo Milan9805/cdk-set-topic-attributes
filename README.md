@@ -14,21 +14,35 @@ This application contains the AWS CDK code for deploying an SNS Topic and a Lamb
 
 You can deploy the entire app from your local machine to AWS. To do this you'll need to:
 
--   Ensure you have prepared the lambda code by running `build` npm script found in `setTopicAttributes/package.json`.
+-   Ensure you have prepared the lambda code by running `pre-package` npm script found in `setTopicAttributes/package.json`.
 -   Configure your `infrastructure/.env` by taking a copy of `/infrastructure/.env.example` and populating it with your AWS credentials.
 
-Once these prerequisites have been set up you can deploy by running the `cdk:deploy` npm script found in
-`infrastructure/package.json`.
+### Pre-requisite utilities
 
-Three other CDK commands are also available as npm scripts to use to manage your CloudFormation stack:
+-   [AWS CLI](https://aws.amazon.com/cli/)
+-   [saml2aws](https://github.com/Versent/saml2aws#linux)
 
--   `cdk:synth` for producing a CloudFormation template of the local stack
--   `cdk:diff` for comparing your local stack to the remote stack
--   `cdk:destroy` for destroying the remote stack (confirmation required)
+Once these prerequisites have been set up you can deploy by logging in to AWS running the `saml2aws login`.
 
-Once you have deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block).
+After this you must run the `deploy` npm script found in `infrastructure/package.json`.
+
+### First time deploying
+
+If it is your first time deploying this project you must comment out the following lines of code:
+
+-   `import { setTopicAttributes } from '../lib/resources/setTopicAttributes'`
+-   `import setTopicAttributesConfig from '../constants/setTopicAttributesConfig';`
+-   `setTopicAttributes( this, 'set-topic-attributes', setTopicAttributesConfig );`
+
+From `infrastructure/lib/infrastructure-stack.ts`
+
+Once you have deployed this project for the first time to your AWS account you must uncomment out the code and re-run the deployment (i.e. follow the steps described in the "Deploying Infrastructure to AWS via CDK locally" section).
+
+Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block).
 
 ## Deploying Infrastructure to AWS via CDK with GitHub Actions
+
+Before doing this you should deploy locally (See "Deploying Infrastructure to AWS via CDK locally")
 
 ### Setting up the GitHub repository
 

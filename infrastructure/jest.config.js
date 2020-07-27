@@ -1,7 +1,7 @@
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    testPathIgnorePatterns: ['<rootDir>/dist/'],
+    testPathIgnorePatterns: ['<rootDir>/cdk.out/', '<rootDir>/dist/'],
     coverageThreshold: {
         global: {
             branches: 100,
