@@ -17,7 +17,7 @@ This application contains the AWS CDK code for deploying an SNS Topic and a Lamb
 -   [AWS CLI](https://aws.amazon.com/cli/)
 -   [saml2aws](https://github.com/Versent/saml2aws#linux)
 
-Once these pre-requisites have been set up you can deploy by logging in to AWS running the `saml2aws login`.
+Once these pre-requisites have been set up you can log into AWS by running the following command: `saml2aws login`.
 
 You can deploy the entire app from your local machine to AWS. To do this you'll need to:
 
