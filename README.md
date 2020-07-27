@@ -6,9 +6,9 @@
 | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg 'I am perfect!') | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg 'I am perfect!') | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg 'I am perfect!') | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg 'I am perfect!') |
 
-The purpose of this project is to provide an example of how to set up an SNS Topic and set this Topics attributes.
+The purpose of this project is to use AWS CloudFormation to set an SNS Topics delivery retry policy
 
-This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is then invoked to set its attributes.
+This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is then invoked (via a GitHub Action) to set the attributes involved with the SNS Topics delivery retry policy.
 
 ## Deploying Infrastructure to AWS via CDK locally
 
