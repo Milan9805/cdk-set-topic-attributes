@@ -38,11 +38,11 @@ From `infrastructure/lib/infrastructure-stack.ts`
 
 Once you have deployed this project for the first time to your AWS account you must uncomment out the code and re-run the deployment (i.e. follow the steps described in the "Deploying Infrastructure to AWS via CDK locally" section).
 
-Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block).
+Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block e.g. `{}`).
 
 ## Deploying Infrastructure to AWS via CDK with GitHub Actions
 
-Before doing this you should deploy locally (See "Deploying Infrastructure to AWS via CDK locally")
+Before doing this you should deploy locally (See "Deploying Infrastructure to AWS via CDK locally" - invocation of the lambda is not required)
 
 ### Setting up the GitHub repository
 
