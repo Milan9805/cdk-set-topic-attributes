@@ -21,7 +21,7 @@ Once these pre-requisites have been set up you can deploy by logging in to AWS r
 
 You can deploy the entire app from your local machine to AWS. To do this you'll need to:
 
--   Configure your `/deployGenericSnsTopic/.env` and `/deploySetTopicAttributesLambda/.env` by taking a copy of `/deployGenericSnsTopic/.env.example` and populating it with your AWS credentials.
+-   Configure your `/deployGenericSnsTopic/.env` and `/deploySetTopicAttributesLambda/.env` by taking a copy of `/deploySetTopicAttributesLambda/.env.example` or `/deployGenericSnsTopic/.env.example` and populating it with your AWS credentials.
 -   Run the `deploy` npm script found in `/deployGenericSnsTopic/package.json`
 -   Run the `pre-package` npm script found in `/setTopicAttributes/package.json`
 -   Run the `deploy` npm script found in `/deploySetTopicAttributesLambda/package.json`
@@ -41,7 +41,7 @@ In order for the GithubAction to invoke the set-topic-attributes Lambda we must 
 -   Select `Attach existing policies directly`
     -   Add `AWSLambdaRole`
 -   Click `Next: Tags`
-    -   Add the tags specified in `infrastructure/constants/tags.ts`
+    -   Add the tags specified in `/deployGenericSnsTopic/constants/tags.ts` or in `/deploySetTopicAttributesLambda/constants/tags.ts`
 
 Once you have created your new user you must ensure the following secrets are added (Settings -> Secrets):
 
