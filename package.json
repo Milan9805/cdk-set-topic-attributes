@@ -15,9 +15,10 @@
     "main": "index.js",
     "scripts": {
         "pre-commit": "lint-staged && npm run test",
-        "test": "run-s test:build:infrastructure test:build:lambda",
-        "test:build:infrastructure": "cd infrastructure && npm install && run-s build test",
-        "test:build:lambda": "cd setTopicAttributes && npm install && run-s build test",
+        "test": "run-s test:build:deployGenericSnsTopic test:build:deploySetTopicAttributesLambda test:build:lambda",
+        "test:build:deployGenericSnsTopic": "cd deployGenericSnsTopic && npm ci && run-s build test",
+        "test:build:deploySetTopicAttributesLambda": "cd deploySetTopicAttributesLambda && npm ci && run-s build test",
+        "test:build:lambda": "cd setTopicAttributes && npm ci && run-s build test",
         "test:coverage": "jest --coverage --coverageReporters=html && npm run open-coverage"
     },
     "husky": {

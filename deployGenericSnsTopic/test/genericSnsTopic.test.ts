@@ -1,6 +1,6 @@
 import { expect as expectCDK, haveOutput, haveResource } from '@aws-cdk/assert';
 import { App } from '@aws-cdk/core';
-import { InfrastructureStack } from '../lib/infrastructure-stack';
+import { GenericSnsTopicStack } from '../lib/genericSnsTopic-stack';
 import mock from 'mock-fs';
 
 afterAll(() => {
@@ -13,7 +13,7 @@ describe('eventfeed stack tests', () => {
     });
 
     const app = new App();
-    const stack = new InfrastructureStack(app, 'InfrastructureStack');
+    const stack = new GenericSnsTopicStack(app, 'InfrastructureStack');
     const tags = [
         {
             Key: 'defined_in',
@@ -36,15 +36,6 @@ describe('eventfeed stack tests', () => {
     it('Creates a SNS Topic with correct tags', () => {
         expectCDK(stack).to(
             haveResource('AWS::SNS::Topic', {
-                Tags: tags,
-            })
-        );
-    });
-
-    it('Creates a Lambda with correct tags', () => {
-        expectCDK(stack).to(
-            haveResource('AWS::Lambda::Function', {
-                FunctionName: 'set-topic-attributes',
                 Tags: tags,
             })
         );

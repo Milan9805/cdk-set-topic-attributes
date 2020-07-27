@@ -12,9 +12,6 @@ export const handler = async (): Promise<Response | AWSError> => {
                 numMaxDelayRetries: 2,
                 backoffFunction: 'exponential',
             },
-            throttlePolicy: {
-                maxRecievesPerSecond: 5,
-            },
             disableSubscriptionOverrides: false,
         },
     };

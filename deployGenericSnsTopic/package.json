@@ -1,18 +1,14 @@
 {
   "name": "cdk-set-topic-attributes",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "CloudFormation code",
   "author": "Milan Makwana",
   "bin": {
-    "infrastructure": "bin/infrastructure.js"
+    "infrastructure": "bin/genericSnsTopic.js"
   },
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "cdk:deploy": "bash scripts/cdk-deploy",
-    "cdk:destroy": "bash scripts/cdk-destroy",
-    "cdk:diff": "bash scripts/cdk-diff",
-    "cdk:synth": "bash scripts/cdk-synth",
     "clean": "rm -rf dist/ cdk.out/ coverage/",
     "deploy": "run-s clean build && cdk bootstrap && cdk deploy",
     "test": "jest --coverage",

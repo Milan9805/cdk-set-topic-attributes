@@ -35,9 +35,6 @@ describe('Handler', () => {
                     numMaxDelayRetries: 2,
                     backoffFunction: 'exponential',
                 },
-                throttlePolicy: {
-                    maxRecievesPerSecond: 5,
-                },
                 disableSubscriptionOverrides: false,
             },
         };

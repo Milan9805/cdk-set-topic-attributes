@@ -8,41 +8,27 @@
 
 The purpose of this project is to provide an example of how to set up an SNS Topic and set this Topics attributes.
 
-This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is invoked to set its attributes.
+This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is then invoked to set its attributes.
 
 ## Deploying Infrastructure to AWS via CDK locally
-
-You can deploy the entire app from your local machine to AWS. To do this you'll need to:
-
--   Ensure you have prepared the lambda code by running `pre-package` npm script found in `setTopicAttributes/package.json`.
--   Configure your `infrastructure/.env` by taking a copy of `/infrastructure/.env.example` and populating it with your AWS credentials.
 
 ### Pre-requisite utilities
 
 -   [AWS CLI](https://aws.amazon.com/cli/)
 -   [saml2aws](https://github.com/Versent/saml2aws#linux)
 
-Once these prerequisites have been set up you can deploy by logging in to AWS running the `saml2aws login`.
+Once these pre-requisites have been set up you can deploy by logging in to AWS running the `saml2aws login`.
 
-After this you must run the `deploy` npm script found in `infrastructure/package.json`.
+You can deploy the entire app from your local machine to AWS. To do this you'll need to:
 
-### First time deploying
-
-If it is your first time deploying this project you must comment out the following lines of code:
-
--   `import { setTopicAttributes } from '../lib/resources/setTopicAttributes'`
--   `import setTopicAttributesConfig from '../constants/setTopicAttributesConfig';`
--   `setTopicAttributes( this, 'set-topic-attributes', setTopicAttributesConfig );`
-
-From `infrastructure/lib/infrastructure-stack.ts`
-
-Once you have deployed this project for the first time to your AWS account you must uncomment out the code and re-run the deployment (i.e. follow the steps described in the "Deploying Infrastructure to AWS via CDK locally" section).
+-   Configure your `/deployGenericSnsTopic/.env` and `/deploySetTopicAttributesLambda/.env` by taking a copy of `/deployGenericSnsTopic/.env.example` and populating it with your AWS credentials.
+-   Run the `deploy` npm script found in `/deployGenericSnsTopic/package.json`
+-   Run the `pre-package` npm script found in `/setTopicAttributes/package.json`
+-   Run the `deploy` npm script found in `/deploySetTopicAttributesLambda/package.json`
 
 Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block).
 
 ## Deploying Infrastructure to AWS via CDK with GitHub Actions
-
-Before doing this you should deploy locally (See "Deploying Infrastructure to AWS via CDK locally")
 
 ### Setting up the GitHub repository
 
@@ -73,3 +59,14 @@ To ensure CDK is able to evaluate environment variables during the workflow (Git
 We are able to deploy using CDK via the use of GitHub Actions by defining a workflow. This workflow can be found here:
 
 -   `.github/workflows/cdk-deploy.yml`
+
+## Pre-commit hooks
+
+The project has been configured so it runs [prettier](https://prettier.io/) for auto-formatting the code as well as [xo](https://github.com/xojs/xo),
+which is an ESLint wrapper, in the pre-commit stage.
+
+To use the pre-commit hook on a Windows machine you must use Windows Subsytem for Linux (WSL) or Cygwin.
+
+To bypass the pre-commit hook you can simply add the `--no-verify` tag at the end of your commit message. For example:
+
+-   `git commit -m "Example message" --no-verify`

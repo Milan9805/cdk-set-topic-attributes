@@ -15,7 +15,5 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: "Install root project"
         run: npm install
-      - name: "Install, Build and Test set-topic-attributes lambda"
-        run: npm run test:build:lambda
-      - name: "Install, Build and Test infrastructure"
-        run: npm run test:build:infrastructure
+      - name: "Test project"
+        run: npm run test
