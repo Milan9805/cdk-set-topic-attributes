@@ -10,7 +10,7 @@ The purpose of this project is to use AWS CloudFormation to set an SNS Topics de
 
 This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is then invoked (via a GitHub Action) to set the attributes involved with the SNS Topics delivery retry policy.
 
-## Deploying Infrastructure to AWS via CDK locally
+## Deploying to AWS via CDK locally
 
 ### Pre-requisite utilities
 
@@ -28,7 +28,7 @@ You can deploy the entire app from your local machine to AWS. To do this you'll 
 
 Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block e.g. `{}`).
 
-## Deploying Infrastructure to AWS via CDK with GitHub Actions
+## Deploying to AWS via CDK with GitHub Actions
 
 ### Setting up the GitHub repository
 
