@@ -1,16 +1,16 @@
 import { expect as expectCDK, haveOutput, haveResource } from '@aws-cdk/assert';
 import { App } from '@aws-cdk/core';
 import { GenericSnsTopicStack } from '../lib/genericSnsTopic-stack';
-// import mock from 'mock-fs';
+import mock from 'mock-fs';
 
-// afterAll(() => {
-//     mock.restore();
-// });
+afterAll(() => {
+    mock.restore();
+});
 
 describe('eventfeed stack tests', () => {
-    // mock({
-    //     '../setTopicAttributes/dist': {},
-    // });
+    mock({
+        '../setTopicAttributes/dist': {},
+    });
 
     const app = new App();
     const stack = new GenericSnsTopicStack(app, 'InfrastructureStack');
@@ -49,13 +49,12 @@ describe('eventfeed stack tests', () => {
         );
     });
 
-    it("Creates a NestedStack with a Lambda", () => {
-        console.log(stack.node.children.toLocaleString());
+    it('Creates a NestedStack with a Lambda', () => {
         expect(stack.node.children.toLocaleString()).toContain(
-          "InfrastructureStack/SetTopicAttributes"
+            'InfrastructureStack/SetTopicAttributes'
         );
         expect(stack.node.children.toLocaleString()).toContain(
-          "InfrastructureStack/SetTopicAttributes.NestedStack"
+            'InfrastructureStack/SetTopicAttributes.NestedStack'
         );
-      });
+    });
 });
