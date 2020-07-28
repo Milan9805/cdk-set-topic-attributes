@@ -3,8 +3,6 @@ module.exports = {
     collectCoverageFrom: [
         '<rootDir>/deployGenericSnsTopic/**/*.ts',
         '!<rootDir>/deployGenericSnsTopic/bin/*.ts',
-        '<rootDir>/deploySetTopicAttributesLambda/**/*.ts',
-        '!<rootDir>/deploySetTopicAttributesLambda/bin/*.ts',
         '<rootDir>/setTopicAtributes/src/*.ts',
         '<rootDir>/setTopicAtributes/src/**/*.ts',
         '!<rootDir>/setTopicAtributes/src/*.test.ts',
@@ -14,8 +12,6 @@ module.exports = {
     testPathIgnorePatterns: [
         '<rootDir>/deployGenericSnsTopic/cdk.out/',
         '<rootDir>/deployGenericSnsTopic/dist/',
-        '<rootDir>/deploySetTopicAttributesLambda/cdk.out/',
-        '<rootDir>/deploySetTopicAttributesLambda/dist/',
         '<rootDir>/setTopicAttributes/dist/',
     ],
     testEnvironment: 'node',

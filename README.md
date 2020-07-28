@@ -8,7 +8,7 @@
 
 The purpose of this project is to use AWS CloudFormation to set an SNS Topics delivery retry policy
 
-This application contains the AWS CDK code for deploying an SNS Topic and a Lambda which is then invoked (via a GitHub Action) to set the attributes involved with the SNS Topics delivery retry policy.
+This application contains the AWS CDK code for deploying an SNS Topic and a Lambda using Nested Stacks. This Lambda Function is then invoked (via a GitHub Action) to set the attributes involved with the SNS Topics delivery retry policy (paramaters can be configured in `setTopicAttributes/src/index.ts`).
 
 ## Deploying to AWS via CDK locally
 
@@ -21,12 +21,11 @@ Once these pre-requisites have been set up you can log into AWS by running the f
 
 You can deploy the entire app from your local machine to AWS. To do this you'll need to:
 
--   Configure your `/deployGenericSnsTopic/.env` and `/deploySetTopicAttributesLambda/.env` by taking a copy of `/deploySetTopicAttributesLambda/.env.example` or `/deployGenericSnsTopic/.env.example` and populating it with your AWS credentials.
--   Run the `deploy` npm script found in `/deployGenericSnsTopic/package.json`
+-   Configure your `/deployGenericSnsTopic/.env` by taking a copy of `/deployGenericSnsTopic/.env.example` and populating it with your AWS credentials.
 -   Run the `pre-package` npm script found in `/setTopicAttributes/package.json`
--   Run the `deploy` npm script found in `/deploySetTopicAttributesLambda/package.json`
+-   Run the `deploy` npm script found in `/deployGenericSnsTopic/package.json`
 
-Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block e.g. `{}`).
+Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block e.g. `{}`). This will set your delivery retry policy as stated in `setTopicAttributes/src/index.ts`. This is easily configurable (i.e. change the values)
 
 ## Deploying to AWS via CDK with GitHub Actions
 
@@ -41,7 +40,7 @@ In order for the GithubAction to invoke the set-topic-attributes Lambda we must 
 -   Select `Attach existing policies directly`
     -   Add `AWSLambdaRole`
 -   Click `Next: Tags`
-    -   Add the tags specified in `/deployGenericSnsTopic/constants/tags.ts` or in `/deploySetTopicAttributesLambda/constants/tags.ts`
+    -   Add the tags specified in `/deployGenericSnsTopic/constants/tags.ts`
 
 Once you have created your new user you must ensure the following secrets are added (Settings -> Secrets):
 

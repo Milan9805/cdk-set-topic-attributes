@@ -1,4 +1,4 @@
-import { Construct, Fn, Duration } from '@aws-cdk/core';
+import { Construct, Duration } from '@aws-cdk/core';
 
 import { Topic, ITopic } from '@aws-cdk/aws-sns';
 
@@ -30,7 +30,7 @@ export const setTopicAttributes = (
 ) => {
     const construct: Construct = new Construct(scope, id);
 
-    const topic = getTopic(construct);
+    const topic = getTopic(construct, props.topicArn);
     const setTopicAttributesPolicyStatement = createPolicyStatement(
         topic.topicArn
     );
@@ -50,12 +50,8 @@ export const setTopicAttributes = (
     );
 };
 
-const getTopic = (construct: Construct): ITopic => {
-    return Topic.fromTopicArn(
-        construct,
-        'genericSnsTopic',
-        Fn.importValue('genericSnsTopic')
-    );
+const getTopic = (construct: Construct, topicArn: string): ITopic => {
+    return Topic.fromTopicArn(construct, 'genericSnsTopic', topicArn);
 };
 
 const createPolicyStatement = (resourceArn: string): PolicyStatement => {

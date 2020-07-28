@@ -17,6 +17,18 @@ jobs:
                 registry-url: "https://registry.npmjs.org/"
           - name: "get repo name as environment variable"
             uses: franzdiebold/github-env-vars-action@v1.0.0
+          - name: "install set-topic-attributes lambda"
+            run: |
+                cd setTopicAttributes
+                npm ci
+          - name: "test set-topic-attributes lambda"
+            run: |
+                cd setTopicAttributes
+                npm run test
+          - name: "package set-topic-attributes lambda"
+            run: |
+                cd setTopicAttributes
+                npm run pre-package
           - name: "install generic sns topic stack"
             run: |
                 cd deployGenericSnsTopic
@@ -45,46 +57,6 @@ jobs:
               --require-approval never \
               --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
               --toolkit-stack-name $GITHUB_REPOSITORY_NAME-generic-sns-topic-cdk-toolkit
-          - name: "install set-topic-attributes lambda"
-            run: |
-                cd setTopicAttributes
-                npm ci
-          - name: "test set-topic-attributes lambda"
-            run: |
-                cd setTopicAttributes
-                npm run test
-          - name: "package set-topic-attributes lambda"
-            run: |
-                cd setTopicAttributes
-                npm run pre-package
-          - name: "install set topic attributes stack"
-            run: |
-                cd deploySetTopicAttributesLambda
-                npm ci
-          - name: "test set topic attributes stack"
-            run: |
-                cd deploySetTopicAttributesLambda
-                npm run test
-          - name: "build set topic attributes stack"
-            run: |
-                cd deploySetTopicAttributesLambda
-                npm run build
-          - name: "deploy set topic attributes stack"
-            env:
-              AWS_ACCESS_KEY_ID: "${{secrets.AWS_ACCESS_KEY_ID_DEV}}"
-              AWS_ACCOUNT_ID: "${{secrets.AWS_ACCOUNT_ID_DEV}}"
-              AWS_SECRET_ACCESS_KEY: "${{secrets.AWS_SECRET_ACCESS_KEY_DEV}}"
-              AWS_DEFAULT_REGION: "eu-west-1"
-              PUSHED_BY: "github"
-            run: |
-              cd deploySetTopicAttributesLambda
-              npx cdk bootstrap \
-              --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
-              --toolkit-stack-name $GITHUB_REPOSITORY_NAME-set-topic-attributes-lambda-cdk-toolkit
-              npx cdk deploy \
-              --require-approval never \
-              --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/CloudformationDeploymentRole \
-              --toolkit-stack-name $GITHUB_REPOSITORY_NAME-set-topic-attributes-lambda-cdk-toolkit
           - name: Invoke set-topic-attributes Lambda
             uses: gagoar/invoke-aws-lambda@master
             with:
