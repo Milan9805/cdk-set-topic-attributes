@@ -17,8 +17,7 @@
         "pre-commit": "lint-staged && npm run test",
         "test": "run-s test:build:deployGenericSnsTopic test:build:lambda",
         "test:build:deployGenericSnsTopic": "cd deployGenericSnsTopic && npm ci && run-s build test",
-        "test:build:lambda": "cd setTopicAttributes && npm ci && run-s build test",
-        "test:coverage": "jest --coverage --coverageReporters=html && npm run open-coverage"
+        "test:build:lambda": "cd setTopicAttributes && npm ci && run-s build test"
     },
     "husky": {
         "hooks": {

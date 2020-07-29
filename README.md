@@ -22,7 +22,7 @@ Once these pre-requisites have been set up you can log into AWS by running the f
 You can deploy the entire app from your local machine to AWS. To do this you'll need to:
 
 -   Configure your `/deployGenericSnsTopic/.env` by taking a copy of `/deployGenericSnsTopic/.env.example` and populating it with your AWS credentials.
--   Run the `pre-package` npm script found in `/setTopicAttributes/package.json`
+-   Run the `package` npm script found in `/setTopicAttributes/package.json`
 -   Run the `deploy` npm script found in `/deployGenericSnsTopic/package.json`
 
 Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block e.g. `{}`). This will set your delivery retry policy as stated in `setTopicAttributes/src/index.ts`. This is easily configurable (i.e. change the values)
@@ -44,14 +44,14 @@ In order for the GithubAction to invoke the set-topic-attributes Lambda we must 
 
 Once you have created your new user you must ensure the following secrets are added (Settings -> Secrets):
 
--   `AWS_ACCESS_KEY_ID_INVOKE_TOPIC_LAMBDA_USER_DEV` (which is the access key given when creating the user)
--   `AWS_SECRET_ACCESS_KEY_INVOKE_TOPIC_LAMBDA_USER_DEV` (which is the secret access key given when creating the user)
+-   `AWS_ACCESS_KEY_ID_INVOKE_TOPIC_LAMBDA_USER` (which is the access key given when creating the user)
+-   `AWS_SECRET_ACCESS_KEY_INVOKE_TOPIC_LAMBDA_USER` (which is the secret access key given when creating the user)
 
 To ensure CDK is able to evaluate environment variables during the workflow (GitHub Action), you must ensure the following secrets are added (Settings -> Secrets):
 
--   `AWS_ACCESS_KEY_ID_DEV`
+-   `AWS_ACCESS_KEY_ID`
 -   `AWS_ACCOUNT_ID`
--   `AWS_SECRET_ACCESS_KEY_DEV`
+-   `AWS_SECRET_ACCESS_KEY`
 
 ### Defining a workflow
 

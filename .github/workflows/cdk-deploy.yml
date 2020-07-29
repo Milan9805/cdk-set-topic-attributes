@@ -28,7 +28,7 @@ jobs:
           - name: "package set-topic-attributes lambda"
             run: |
                 cd setTopicAttributes
-                npm run pre-package
+                npm run package
           - name: "install generic sns topic stack"
             run: |
                 cd deployGenericSnsTopic
@@ -43,9 +43,9 @@ jobs:
                 npm run build
           - name: "deploy generic sns topic stack"
             env:
-              AWS_ACCESS_KEY_ID: "${{secrets.AWS_ACCESS_KEY_ID_DEV}}"
-              AWS_ACCOUNT_ID: "${{secrets.AWS_ACCOUNT_ID_DEV}}"
-              AWS_SECRET_ACCESS_KEY: "${{secrets.AWS_SECRET_ACCESS_KEY_DEV}}"
+              AWS_ACCESS_KEY_ID: "${{secrets.AWS_ACCESS_KEY_ID}}"
+              AWS_ACCOUNT_ID: "${{secrets.AWS_ACCOUNT_ID}}"
+              AWS_SECRET_ACCESS_KEY: "${{secrets.AWS_SECRET_ACCESS_KEY}}"
               AWS_DEFAULT_REGION: "eu-west-1"
               PUSHED_BY: "github"
             run: |
@@ -60,8 +60,8 @@ jobs:
           - name: Invoke set-topic-attributes Lambda
             uses: gagoar/invoke-aws-lambda@master
             with:
-              AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_INVOKE_TOPIC_LAMBDA_USER_DEV }}
-              AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_INVOKE_TOPIC_LAMBDA_USER_DEV }}
+              AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID_INVOKE_TOPIC_LAMBDA_USER}}
+              AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY_INVOKE_TOPIC_LAMBDA_USER}}
               REGION: "eu-west-1"
               FunctionName: set-topic-attributes
               Payload: '{}'

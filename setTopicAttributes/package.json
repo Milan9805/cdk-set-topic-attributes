@@ -2,17 +2,17 @@
     "name": "set-topic-attributes",
     "version": "1.0.0",
     "description": "Contains Lambda code to set topic attributes",
+    "license": "ISC",
+    "author": "Milan Makwana",
     "main": "index.js",
     "scripts": {
-        "clean": "rm -rf dist/ cdk.out/ coverage/",
         "build": "tsc",
         "build:watch": "tsc -w",
-        "pre-package": "run-s build && cp package*.json dist/ && cd dist && npm ci --production && rm package*.json && cd ..",
+        "clean": "rm -rf dist/ cdk.out/ coverage/",
+        "package": "run-s build && cp package*.json dist/ && cd dist && npm ci --production && rm package*.json && cd ..",
         "test": "jest --coverage",
         "test:watch": "jest --coverage --watchAll"
     },
-    "author": "Milan Makwana",
-    "license": "ISC",
     "dependencies": {
         "@aws-cdk/aws-sns": "^1.54.0",
         "@aws-cdk/core": "^1.54.0",
