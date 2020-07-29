@@ -13,7 +13,7 @@ describe('eventfeed stack tests', () => {
     });
 
     const app = new App();
-    const stack = new GenericSnsTopicStack(app, 'InfrastructureStack');
+    const stack = new GenericSnsTopicStack(app, 'cdk-set-topic-attributes');
     const tags = [
         {
             Key: 'defined_in',
@@ -51,10 +51,10 @@ describe('eventfeed stack tests', () => {
 
     it('Creates a NestedStack with a Lambda', () => {
         expect(stack.node.children.toLocaleString()).toContain(
-            'InfrastructureStack/SetTopicAttributes'
+            'cdk-set-topic-attributes/SetTopicAttributes'
         );
         expect(stack.node.children.toLocaleString()).toContain(
-            'InfrastructureStack/SetTopicAttributes.NestedStack'
+            'cdk-set-topic-attributes/SetTopicAttributes.NestedStack'
         );
     });
 });
