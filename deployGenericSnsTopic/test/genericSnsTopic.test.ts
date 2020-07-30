@@ -1,6 +1,6 @@
 import { expect as expectCDK, haveOutput, haveResource } from '@aws-cdk/assert';
 import { App } from '@aws-cdk/core';
-import { GenericSnsTopicStack } from '../lib/genericSnsTopic-stack';
+import { genericSnsTopicStack } from '../lib/genericSnsTopic-stack';
 import mock from 'mock-fs';
 
 afterAll(() => {
@@ -13,7 +13,7 @@ describe('eventfeed stack tests', () => {
     });
 
     const app = new App();
-    const stack = new GenericSnsTopicStack(app, 'cdk-set-topic-attributes');
+    const stack = genericSnsTopicStack(app, 'cdk-set-topic-attributes');
     const tags = [
         {
             Key: 'defined_in',

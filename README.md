@@ -1,5 +1,7 @@
 # cdk-set-topic-attributes
 
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
+
 [![Tests](https://github.com/Milan9805/cdk-set-topic-attributes/workflows/Tests/badge.svg)](https://github.com/Milan9805/cdk-set-topic-attributes/actions)
 
 | Statements                                                                                  | Branches                                                                                  | Functions                                                                                  | Lines                                                                                  |
