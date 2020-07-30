@@ -1,7 +1,6 @@
 # cdk-set-topic-attributes
 
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
-
 [![Tests](https://github.com/Milan9805/cdk-set-topic-attributes/workflows/Tests/badge.svg)](https://github.com/Milan9805/cdk-set-topic-attributes/actions)
 
 | Statements                                                                                  | Branches                                                                                  | Functions                                                                                  | Lines                                                                                  |
@@ -10,7 +9,7 @@
 
 The purpose of this project is to use AWS CloudFormation to set an SNS Topics delivery retry policy
 
-This application contains the AWS CDK code for deploying an SNS Topic and a Lambda using Nested Stacks. This Lambda Function is then invoked (via a GitHub Action) to set the attributes involved with the SNS Topics delivery retry policy (paramaters can be configured in `setTopicAttributes/src/index.ts`).
+This application contains the AWS CDK code for deploying an SNS Topic and a Lambda using Nested Stacks. This Lambda Function is then invoked (via a GitHub Action) to set the attributes involved with the SNS Topics delivery retry policy. The paramaters can be configured in `.github/workflows/cdk-deploy.yml` (lines 67-79).
 
 ## Deploying to AWS via CDK locally
 
@@ -27,7 +26,7 @@ You can deploy the entire app from your local machine to AWS. To do this you'll 
 -   Run the `package` npm script found in `/setTopicAttributes/package.json`
 -   Run the `deploy` npm script found in `/deployGenericSnsTopic/package.json`
 
-Once you have fully deployed the app, you should manually go into the AWS Console and invoke the lambda with an empty body (i.e. configure test events and pass in an empty JSON block e.g. `{}`). This will set your delivery retry policy as stated in `setTopicAttributes/src/index.ts`. This is easily configurable (i.e. change the values)
+Once you have deployed the app, you should manually go into the AWS Console and invoke the lambda i.e. configure test events and pass in a JSON block as shown in `.github/workflows/cdk-deploy.yml` (lines 67-79).
 
 ## Deploying to AWS via CDK with GitHub Actions
 

@@ -1,32 +1,30 @@
-import { SNS, AWSError } from 'aws-sdk';
+import { SNS } from 'aws-sdk';
 import setTopicAttributesConfig from './config/setTopicAttributesConfig';
 import { SetTopicAttributesError } from './errors/SetTopicAttributesError';
+import { ResponseBody } from './types/ResponseBody';
+import { DeliveryRetryPolicy } from './types/DeliveryRetryPolicy';
 
-export const handler = async (): Promise<Response | AWSError> => {
-    const attributeValue = {
-        http: {
-            defaultHealthyRetryPolicy: {
-                minDelayTarget: 30,
-                maxDelayTarget: 30,
-                numRetries: 5,
-                numMaxDelayRetries: 2,
-                backoffFunction: 'exponential',
-            },
-            disableSubscriptionOverrides: false,
-        },
-    };
-
+export const handler = async (
+    attributeValue: DeliveryRetryPolicy
+): Promise<ResponseBody> => {
     const paramaters = {
         AttributeName: 'DeliveryPolicy',
         TopicArn: setTopicAttributesConfig.TOPIC_ARN,
         AttributeValue: JSON.stringify(attributeValue),
     };
-
-    return await new SNS()
+    let responseBody;
+    await new SNS()
         .setTopicAttributes(paramaters)
         .promise()
         .catch(error => {
             throw new SetTopicAttributesError(error.message);
         })
-        .then();
+        .then(() => {
+            responseBody = {
+                deliveryRetryPolicy: attributeValue,
+                message: 'DeliveryRetryPolicy successfully set',
+            };
+        });
+
+    return responseBody;
 };

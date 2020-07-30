@@ -1,8 +1,10 @@
 import { SNS } from 'aws-sdk';
 
-import { handler } from './index';
+import { handler } from '.';
 import setTopicAttributesConfig from './config/setTopicAttributesConfig';
 import { SetTopicAttributesError } from './errors/SetTopicAttributesError';
+import { DeliveryRetryPolicy } from './types/DeliveryRetryPolicy';
+import { ResponseBody } from './types/ResponseBody';
 
 jest.mock('aws-sdk', () => {
     const mockedSNS = {
@@ -17,8 +19,22 @@ beforeAll(() => {
 });
 
 afterEach(() => {
-    jest.clearAllMocks;
+    jest.clearAllMocks();
 });
+
+const attributeValue: DeliveryRetryPolicy = {
+    http: {
+        defaultHealthyRetryPolicy: {
+            minDelayTarget: 5,
+            maxDelayTarget: 1796,
+            numRetries: 5,
+            numMaxDelayRetries: 2,
+            numNoDelayRetries: 2,
+            backoffFunction: 'exponential',
+        },
+        disableSubscriptionOverrides: false,
+    },
+};
 
 describe('Handler', () => {
     it('Should call setTopicAttributes method with the correct parameters', async () => {
@@ -26,20 +42,8 @@ describe('Handler', () => {
         const mockedResponseData = {
             Status: 'OK',
         };
-        const attributeValue = {
-            http: {
-                defaultHealthyRetryPolicy: {
-                    minDelayTarget: 30,
-                    maxDelayTarget: 30,
-                    numRetries: 5,
-                    numMaxDelayRetries: 2,
-                    backoffFunction: 'exponential',
-                },
-                disableSubscriptionOverrides: false,
-            },
-        };
 
-        const params = {
+        const parameters = {
             AttributeName: 'DeliveryPolicy',
             TopicArn: 'TopicArn',
             AttributeValue: JSON.stringify(attributeValue),
@@ -49,22 +53,30 @@ describe('Handler', () => {
             mockedResponseData
         );
 
-        await handler();
+        const expectedResponse: ResponseBody = {
+            deliveryRetryPolicy: attributeValue,
+            message: 'DeliveryRetryPolicy successfully set',
+        };
 
+        const response: ResponseBody = await handler(attributeValue);
+
+        expect(response).toMatchObject(expectedResponse);
         expect(sns.setTopicAttributes().promise).toBeCalledTimes(1);
-        expect(sns.setTopicAttributes).toBeCalledWith(params);
+        expect(sns.setTopicAttributes).toBeCalledWith(parameters);
     });
-    it('Should should throw a SetTopicAttributesError if no attributeValue is passed', async () => {
+    it('Should should throw a SetTopicAttributesError if incorrect parameter is passed', async () => {
         const sns = new SNS();
 
         (sns.setTopicAttributes().promise as jest.Mock).mockRejectedValueOnce(
-            new Error('Missing attributeValue')
+            new Error(
+                'Invalid parameter: DeliveryPolicy: Unexpected JSON member: throttlePolicy'
+            )
         );
 
-        await handler().catch(error => {
+        await handler(attributeValue).catch(error => {
             expect(error).toBeInstanceOf(SetTopicAttributesError);
             expect(error.message).toBe(
-                'Error setting topic attributes: Missing attributeValue'
+                'Error setting topic attributes: Invalid parameter: DeliveryPolicy: Unexpected JSON member: throttlePolicy'
             );
         });
     });

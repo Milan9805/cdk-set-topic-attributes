@@ -64,4 +64,16 @@ jobs:
               AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY_INVOKE_TOPIC_LAMBDA_USER}}
               REGION: "eu-west-1"
               FunctionName: set-topic-attributes
-              Payload: '{}'
+              Payload: '{
+                          "http": {
+                            "defaultHealthyRetryPolicy": {
+                              "minDelayTarget": 5,
+                              "maxDelayTarget": 1200,
+                              "numRetries": 5,
+                              "numMaxDelayRetries": 1,
+                              "numNoDelayRetries": 1,
+                              "backoffFunction": "exponential"
+                            },
+                            "disableSubscriptionOverrides": false
+                          }
+                        }'
