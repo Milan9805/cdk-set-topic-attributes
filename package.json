@@ -33,6 +33,12 @@
             {
                 "files": "**/*.test.{js,ts}",
                 "env": "jest"
+            },
+            {
+                "files": "deployGenericSnsTopic/lib/genericSnsTopic-stack.ts",
+                "rules": {
+                    "no-new": "off"
+                }
             }
         ],
         "parserOptions": {

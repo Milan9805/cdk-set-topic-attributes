@@ -16,7 +16,6 @@ export const genericSnsTopicStack = (
     const genericSnsTopic = new Topic(stack, 'genericSnsTopic');
     const topicArn: string = genericSnsTopic.topicArn;
 
-    // eslint-disable-next-line no-new
     new CfnOutput(genericSnsTopic, 'genericSnsTopic', {
         exportName: 'genericSnsTopic',
         value: topicArn,
@@ -26,7 +25,6 @@ export const genericSnsTopicStack = (
         topicArn
     );
 
-    // eslint-disable-next-line no-new
     new SetTopicAttributesStack(
         stack,
         'SetTopicAttributes',
