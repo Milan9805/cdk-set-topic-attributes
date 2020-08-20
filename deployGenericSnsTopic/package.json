@@ -1,38 +1,38 @@
 {
-  "name": "cdk-set-topic-attributes",
-  "version": "1.0.0",
-  "description": "CloudFormation code",
-  "author": "Milan Makwana",
-  "bin": {
-    "infrastructure": "bin/genericSnsTopic.js"
-  },
-  "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc -w",
-    "clean": "rm -rf dist/ cdk.out/ coverage/",
-    "deploy": "run-s clean build && cdk bootstrap && cdk deploy",
-    "test": "jest --coverage",
-    "test:watch": "jest --coverage --watchAll"
-  },
-  "devDependencies": {
-    "@aws-cdk/assert": "^1.55.0",
-    "@types/jest": "^26.0.8",
-    "@types/mock-fs": "^4.10.0",
-    "aws-cdk": "^1.55.0",
-    "jest": "^26.2.1",
-    "mock-fs": "^4.12.0",
-    "npm-run-all": "^4.1.5",
-    "ts-jest": "^26.1.4",
-    "typescript": "^3.9.7"
-  },
-  "dependencies": {
-    "@aws-cdk/aws-cloudformation": "^1.55.0",
-    "@aws-cdk/aws-lambda": "^1.55.0",
-    "@aws-cdk/aws-sns": "^1.55.0",
-    "@aws-cdk/core": "^1.55.0",
-    "@types/dotenv-safe": "^8.1.1",
-    "@types/lodash": "^4.14.158",
-    "dotenv-safe": "^8.2.0",
-    "lodash": "^4.17.19"
-  }
+    "name": "cdk-set-topic-attributes",
+    "version": "1.0.0",
+    "description": "CloudFormation code",
+    "author": "Milan Makwana",
+    "bin": {
+        "infrastructure": "bin/genericSnsTopic.js"
+    },
+    "scripts": {
+        "build": "tsc",
+        "build:watch": "tsc -w",
+        "clean": "rm -rf dist/ cdk.out/ coverage/",
+        "deploy": "run-s clean build && cdk bootstrap && cdk deploy",
+        "test": "jest --coverage",
+        "test:watch": "jest --coverage --watchAll"
+    },
+    "dependencies": {
+        "@aws-cdk/aws-cloudformation": "^1.60.0",
+        "@aws-cdk/aws-lambda": "^1.60.0",
+        "@aws-cdk/aws-sns": "^1.60.0",
+        "@aws-cdk/core": "^1.60.0",
+        "@types/dotenv-safe": "^8.1.1",
+        "@types/lodash": "^4.14.159",
+        "dotenv-safe": "^8.2.0",
+        "lodash": "^4.17.20"
+    },
+    "devDependencies": {
+        "@aws-cdk/assert": "^1.60.0",
+        "@types/jest": "^26.0.10",
+        "@types/mock-fs": "^4.10.0",
+        "aws-cdk": "^1.60.0",
+        "jest": "^26.4.1",
+        "mock-fs": "^4.12.0",
+        "npm-run-all": "^4.1.5",
+        "ts-jest": "^26.2.0",
+        "typescript": "^3.9.7"
+    }
 }
