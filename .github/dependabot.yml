@@ -15,6 +15,6 @@ updates:
   - package-ecosystem: "npm"
     directory: "/setTopicAttributes/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     reviewers:
       - "Milan9805"
