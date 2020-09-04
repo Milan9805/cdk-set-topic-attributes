@@ -3,13 +3,13 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     reviewers:
       - "Milan9805"
   - package-ecosystem: "npm"
     directory: "/deployGenericSnsTopic/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     reviewers:
       - "Milan9805"
   - package-ecosystem: "npm"
