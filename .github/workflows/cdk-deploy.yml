@@ -2,7 +2,7 @@ name: cdk deploy
 
 on:
   push:
-    branches: [master]
+    branches: [production]
 
 jobs:
   deploy:
