@@ -78,7 +78,7 @@
         "lint-staged": "^10.3.0",
         "prettier": "^2.1.2",
         "sort-package-json": "^1.46.0",
-        "ts-jest": "^26.3.0",
+        "ts-jest": "^26.4.1",
         "webpack": "^4.44.2",
         "xo": "^0.33.1"
     }
