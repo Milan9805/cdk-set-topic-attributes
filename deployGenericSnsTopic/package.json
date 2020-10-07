@@ -27,7 +27,7 @@
     "devDependencies": {
         "@aws-cdk/assert": "^1.60.0",
         "@types/jest": "^26.0.14",
-        "@types/mock-fs": "^4.10.0",
+        "@types/mock-fs": "^4.13.0",
         "aws-cdk": "^1.65.0",
         "jest": "^26.4.2",
         "mock-fs": "^4.13.0",
