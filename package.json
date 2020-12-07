@@ -79,7 +79,7 @@
         "prettier": "^2.2.1",
         "sort-package-json": "^1.48.0",
         "ts-jest": "^26.4.4",
-        "webpack": "^5.6.0",
+        "webpack": "^5.10.0",
         "xo": "^0.35.0"
     }
 }
