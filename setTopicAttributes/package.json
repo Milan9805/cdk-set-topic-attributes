@@ -16,7 +16,7 @@
     "dependencies": {
         "@aws-cdk/aws-sns": "^1.60.0",
         "@aws-cdk/core": "^1.60.0",
-        "aws-sdk": "^2.1068.0",
+        "aws-sdk": "^2.1076.0",
         "ts-custom-error": "^3.2.0"
     },
     "devDependencies": {
